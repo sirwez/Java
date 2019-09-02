@@ -1,0 +1,6 @@
+[TRABALHO INDIVIDUAL] 
+1) Considerar uma Tabela de Símbolos com N nomes gerados aleatoriamente, implementar os algoritmos de ordenação: bubble sort, insertion sort, selection sort, shellsort, mergesort e quicksort; 
+2) Realizar experimentos com N=100, 1000 e 10000, observando o tempo total gasto para cada procedimento de ordenação; 
+3) Gerar gráficos para cada algoritmo. No entanto, pode ser um gráfico mostrando os algoritmos implementados. 
+OBS: Um relatório técnico deve ser produzido para explicar o funcionamento e as decisões de projeto (formato PDF). 
+NOTA: Vale 1,5 pontos para a 1a Avaliação Escrita.
