@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class BubbleSort {
 	private static Scanner entrada;
-	private static ReversedLinesFileReader reader;
+	private static BufferedReader reader;
 
 	public static void main(String[] args) throws IOException {
 	    int tamanho = 0;
@@ -41,7 +41,7 @@ public class BubbleSort {
 	      if (arq.exists()) {
 	        
 	        FileReader ler = new FileReader(path);
-	        reader = new ReversedLinesFileReader(ler); 
+	        reader = new BufferedReader(ler); 
 	        String linha;
 	        while ((linha = reader.readLine()) != null)
 	          L.inserirLista(linha); 
