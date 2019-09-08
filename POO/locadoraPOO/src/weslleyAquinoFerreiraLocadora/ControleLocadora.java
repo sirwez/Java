@@ -109,6 +109,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
         		   alugando.setValor(valor);
         		   aluguel.add(alugando);
         		   placasLocadas.add(placa);
+        		   
         		   return true; //ttudo certo
         	   }
            }
@@ -117,29 +118,148 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 
 	@Override
 	public boolean registrarDevolucao(String placa, Cliente c) {
-		// TODO Auto-generated method stub
+        Aluguel alugando = new Aluguel();
+        
+        for(String x: placasLocadas) {
+     	   if (x!=placa.trim()) {
+     		   return false;//veiculo nao alugado
+     	   }
+        }
+        for(Veiculo v:veiculos)
+        {
+     	   if(v.getPlaca().equals(placa.trim()))
+     	   {
+     		   alugando.setCliente(c);
+     		   alugando.setVeiculo(v);
+     		   aluguel.remove(alugando);
+     		   placasLocadas.remove(placa);
+     		   return true; //removido
+     	   }
+        }
 		return false;
 	}
-
+//falta op 0
 	@Override
 	public void depreciarVeiculos(int tipo, double taxaDepreciacao) {
-		// TODO Auto-generated method stub
+		if(tipo==1) {
+			for(Veiculo v: veiculos) {
+				if(v instanceof Moto) {
+					((Moto) v).diminuirDiaria(taxaDepreciacao);
+				}
+			}
+		}
 		
+		if(tipo==2) {
+			for(Veiculo v: veiculos) {
+				if(v instanceof Carro) {
+					((Carro) v).diminuirDiaria(taxaDepreciacao);
+				}
+			}
+		}
+		
+		if(tipo==3) {
+			for(Veiculo v: veiculos) {
+				if(v instanceof Caminhao) {
+					((Caminhao) v).diminuirDiaria(taxaDepreciacao);
+				}
+			}
+		}
+		
+		if(tipo==4) {
+			for(Veiculo v: veiculos) {
+				if(v instanceof Onibus) {
+					((Onibus) v).diminuirDiaria(taxaDepreciacao);
+				}
+			}
+		}
 	}
-
+//falta op 0
 	@Override
 	public void aumentarDiaria(int tipo, double taxaAumento) {
+
 		if(tipo==1) {
-			Moto moto = new Moto();
-			moto.aumentarDiaria(taxaAumento);
+			for(Veiculo v: veiculos) {
+				if(v instanceof Moto) {
+					((Moto) v).aumentarDiaria(taxaAumento);
+				}
+			}
+		}
+		
+		if(tipo==2) {
+			for(Veiculo v: veiculos) {
+				if(v instanceof Carro) {
+					((Carro) v).aumentarDiaria(taxaAumento);
+				}
+			}
+		}
+		
+		if(tipo==3) {
+			for(Veiculo v: veiculos) {
+				if(v instanceof Caminhao) {
+					((Caminhao) v).aumentarDiaria(taxaAumento);
+				}
+			}
+		}
+		
+		if(tipo==4) {
+			for(Veiculo v: veiculos) {
+				if(v instanceof Onibus) {
+					((Onibus) v).aumentarDiaria(taxaAumento);
+				}
+			}
 		}
 		
 	}
 
 	@Override
 	public double faturamentoTotal(int tipo) {
-		// TODO Auto-generated method stub
+		
+double total=0;
+		
+if(tipo==0) {
+		for(int k=0; k<aluguel.size(); k++) {
+			   total+=aluguel.get(k).getValor();
+			
+	}
+		return total;
+}
+		
+if(tipo==1) {		 
+		for(int k=0; k<aluguel.size(); k++) {
+				if(aluguel.get(k).getVeiculo() instanceof Moto) {
+				total+=aluguel.get(k).getValor();
+					}
+				}
+		return total;
+		}
+		
+if(tipo==2) {		 
+	    for(int k=0; k<aluguel.size(); k++) {
+	        	if(aluguel.get(k).getVeiculo() instanceof Carro) {
+				total+=aluguel.get(k).getValor();
+			}
+		}
+		return total;
+}
+		
+if(tipo==3) {		 
+	    for(int k=0; k<aluguel.size(); k++) {
+	        	if(aluguel.get(k).getVeiculo() instanceof Caminhao) {
+				total+=aluguel.get(k).getValor();
+			}
+		}
+		return total;
+}
+if(tipo==4) {		 
+	    for(int k=0; k<aluguel.size(); k++) {
+	        	if(aluguel.get(k).getVeiculo() instanceof Onibus) {
+				total+=aluguel.get(k).getValor();
+			}
+		}
+		return total;
+}
 		return 0;
+		
 	}
 
 	@Override

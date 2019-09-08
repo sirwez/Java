@@ -15,8 +15,17 @@ public class Onibus extends Veiculo{
 	}
 
 	public int getPassageiros() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Passageiros;
+	}
+
+	public void aumentarDiaria(double aumento) {
+		this.valorDiaria+=aumento;
+	}
+	public void diminuirDiaria(double diminuir) {
+		this.valorDiaria+=diminuir;
+	}
+	public void reduzirValorAvaliado(double reduzir) {
+		this.valorAvaliado+=reduzir;
 	}
 
 }

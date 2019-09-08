@@ -14,8 +14,17 @@ public class Caminhao extends Veiculo{
 		return aux;
 	}
 
-	public int getCarga() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void aumentarDiaria(double aumento) {
+		this.valorDiaria+=aumento;
+	}
+	public void diminuirDiaria(double diminuir) {
+		this.valorDiaria+=diminuir;
+	}
+	public void reduzirValorAvaliado(double reduzir) {
+		this.valorAvaliado+=reduzir;
+	}
+
+	public double getCarga() {
+		return carga;
 	}
 }
