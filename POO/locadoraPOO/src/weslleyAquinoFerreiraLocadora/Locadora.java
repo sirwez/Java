@@ -1,0 +1,55 @@
+package weslleyAquinoFerreiraLocadora;
+
+import java.util.ArrayList;
+
+public abstract class Locadora {
+
+	ArrayList<Veiculo> veiculos = new ArrayList<Veiculo>();
+	ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+
+	public abstract boolean inserir(Veiculo v);
+	
+	public boolean inserir(Cliente c) {
+		  Cliente cliente = pesquisarCliente(c.getCpf());
+		  if (cliente == null) {
+			clientes.add(c);
+			return true;
+		  }
+		  return false;
+	}
+	
+	private Cliente pesquisarCliente(int cpf) {
+	      for (Cliente c : clientes) {
+			if (c.getCpf() == cpf) {
+			   return c;
+			}
+	      }
+	      return null;
+		}
+	
+    public abstract ArrayList<Veiculo> pesquisarMoto(int cilindrada);
+	// tipo de carro
+	// 1 (passeio), 2 (SUV), 3 (pickup)
+    public abstract ArrayList<Veiculo> pesquisarCarro(int tipoCarro);
+    public abstract ArrayList<Veiculo> pesquisarCaminhao(int carga);
+    public abstract ArrayList<Veiculo> pesquisarOnibus(int passageiros);
+    
+    //Seguro Moto = (valor do bem * 11%)/365
+    //Seguro Carro = (valor do bem * 3%)/365
+    //Seguro Caminhão = (valor do bem * 8%)/365
+    //Seguro Ônibus = (valor do bem * 20%)/365
+    
+    //Aluguel = (valor da diária + seguro) * quantidade de dias
+    public abstract double calcularAluguel(String placa, int dias);
+    // Retorna falso se veiculo não existir ou se estiver alugado.
+    public abstract boolean registrarAluguel(String placa, int dias, Cliente c);
+    // Retorna falso se veiculo não existir ou se não estiver alugado.   
+    public abstract boolean registrarDevolucao(String placa, Cliente c);
+    
+	// tipo de veiculo
+	// 0 (todos), 1 (moto), 2 (carro), 3 (caminhão), 4 (ônibus)
+    public abstract void depreciarVeiculos(int tipo, double taxaDepreciacao);
+    public abstract void aumentarDiaria(int tipo, double taxaAumento);
+    public abstract double faturamentoTotal(int tipo);
+    public abstract int quantidadeTotalDeDiarias(int tipo);
+}
