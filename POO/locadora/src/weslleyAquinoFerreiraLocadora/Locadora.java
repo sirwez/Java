@@ -42,20 +42,19 @@ public abstract class Locadora {
     
     //Aluguel = (valor da diária + seguro) * quantidade de dias
     public abstract double calcularAluguel(String placa, int dias);
-    // Retorna falso se veiculo n�o existir ou se estiver alugado.
+    // Retorna falso se veiculo não existir ou se estiver alugado.
     public abstract boolean registrarAluguel(String placa, Date data, int dias, int cpf);
-    // Retorna falso se veiculo n�o existir ou se n�o estiver alugado.    
-    public abstract boolean registrarDevolucao(String placa);
+    // Retorna falso se veiculo não existir ou se não estiver alugado.   
+    public abstract boolean registrarDevolucao(String placa, Cliente c);
     
 	// tipo de veiculo
 	// 0 (todos), 1 (moto), 2 (carro), 3 (caminhão), 4 (ônibus)
     public abstract void depreciarVeiculos(int tipo, double taxaDepreciacao);
     public abstract void aumentarDiaria(int tipo, double taxaAumento);
-    
-    // Retorna o valor total de faturamento para um tipo de ve�culo, durante um per�odo. 
+    // Retorna o valor total de faturamento para um tipo de veículo, durante um período. 
     // Os alugueis devem começar e terminar dentro do período.
     public abstract double faturamentoTotal(int tipo, Date inicio, Date fim);
-    // Retorna a quantidade total de di�rias de aluguel para um tipo de veículo, durante um per�odo.
-    // Os alugueis devem come�ar e terminar dentro do período.
+    // Retorna a quantidade total de diárias de aluguel para um tipo de veículo, durante um período.
+    // Os alugueis devem começar e terminar dentro do período.
     public abstract int quantidadeTotalDeDiarias(int tipo, Date inicio, Date fim);
 }
