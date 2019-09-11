@@ -1,6 +1,7 @@
 package weslleyAquinoFerreiraLocadora;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public abstract class Locadora {
 
@@ -42,7 +43,7 @@ public abstract class Locadora {
     //Aluguel = (valor da diária + seguro) * quantidade de dias
     public abstract double calcularAluguel(String placa, int dias);
     // Retorna falso se veiculo não existir ou se estiver alugado.
-    public abstract boolean registrarAluguel(String placa, int dias, Cliente c);
+    public abstract boolean registrarAluguel(String placa, Date data, int dias, int cpf);
     // Retorna falso se veiculo não existir ou se não estiver alugado.   
     public abstract boolean registrarDevolucao(String placa, Cliente c);
     
@@ -50,6 +51,10 @@ public abstract class Locadora {
 	// 0 (todos), 1 (moto), 2 (carro), 3 (caminhão), 4 (ônibus)
     public abstract void depreciarVeiculos(int tipo, double taxaDepreciacao);
     public abstract void aumentarDiaria(int tipo, double taxaAumento);
-    public abstract double faturamentoTotal(int tipo);
-    public abstract int quantidadeTotalDeDiarias(int tipo);
+    // Retorna o valor total de faturamento para um tipo de veículo, durante um período. 
+    // Os alugueis devem começar e terminar dentro do período.
+    public abstract double faturamentoTotal(int tipo, Date inicio, Date fim);
+    // Retorna a quantidade total de diárias de aluguel para um tipo de veículo, durante um período.
+    // Os alugueis devem começar e terminar dentro do período.
+    public abstract int quantidadeTotalDeDiarias(int tipo, Date inicio, Date fim);
 }

@@ -1,6 +1,7 @@
 package weslleyAquinoFerreiraLocadora;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ControleLocadora extends Locadora {
 	
@@ -27,7 +28,7 @@ public class ControleLocadora extends Locadora {
 
 	@Override
 	public ArrayList<Veiculo> pesquisarMoto(int cilindrada) {
-ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
+     ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 
 		for(Veiculo v: veiculos) {
 			if(v instanceof Moto && ((Moto) v).getCilindrada() >= cilindrada) {
@@ -66,7 +67,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 
 	@Override
 	public ArrayList<Veiculo> pesquisarOnibus(int passageiros) {
-ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
+    ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 		
 		for(Veiculo v: veiculos) {
 			if(v instanceof Onibus && ((Onibus) v).getPassageiros() >= passageiros) {
@@ -88,9 +89,9 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 		}
 		return Aluguel;
 	}
-
+//autenticar cliente e a parte da data(mudar getDias para Data data;
 	@Override
-	public boolean registrarAluguel(String placa, int dias, Cliente c) {
+	public boolean registrarAluguel(String placa, Date data, int dias, int cpf) {
            Aluguel alugando = new Aluguel();
            
            for(String x: placasLocadas) {
@@ -102,7 +103,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
            {
         	   if(v.getPlaca().equals(placa.trim()))
         	   {
-        		   alugando.setCliente(c);
+        		//   alugando.setCliente(c);
         		   alugando.setVeiculo(v);
         		   alugando.setDias(dias);
         		   double valor = calcularAluguel(placa, dias);
@@ -138,14 +139,30 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
         }
 		return false;
 	}
-//falta op 0
+
 	@Override
 	public void depreciarVeiculos(int tipo, double taxaDepreciacao) {
+		
+		if(tipo==0) {
+			for(Veiculo v: veiculos)
+			{
+				if(v instanceof Moto) {
+					((Moto) v).diminuirDiaria(taxaDepreciacao);
+				   }else if(v instanceof Carro) {
+					((Carro) v).diminuirDiaria(taxaDepreciacao);
+			            	}else if(v instanceof Caminhao) {
+					((Caminhao) v).diminuirDiaria(taxaDepreciacao);
+				                   }else if(v instanceof Onibus) {
+					((Onibus) v).diminuirDiaria(taxaDepreciacao);
+				}
+			}
+		}
+		
 		if(tipo==1) {
 			for(Veiculo v: veiculos) {
 				if(v instanceof Moto) {
 					((Moto) v).diminuirDiaria(taxaDepreciacao);
-				}
+				} 
 			}
 		}
 		
@@ -173,10 +190,24 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 			}
 		}
 	}
-//falta op 0
+
 	@Override
 	public void aumentarDiaria(int tipo, double taxaAumento) {
 
+		if(tipo==0) {
+			for(Veiculo v: veiculos)
+			{
+				if(v instanceof Moto) {
+					((Moto) v).diminuirDiaria(taxaAumento);
+				   }else if(v instanceof Carro) {
+					((Carro) v).diminuirDiaria(taxaAumento);
+			            	}else if(v instanceof Caminhao) {
+					((Caminhao) v).diminuirDiaria(taxaAumento);
+				                   }else if(v instanceof Onibus) {
+					((Onibus) v).diminuirDiaria(taxaAumento);
+				}
+			}
+		}
 		if(tipo==1) {
 			for(Veiculo v: veiculos) {
 				if(v instanceof Moto) {
@@ -212,7 +243,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 	}
 
 	@Override
-	public double faturamentoTotal(int tipo) {
+	public double faturamentoTotal(int tipo, Date inicio, Date fim) {
 		
 double total=0;
 		
@@ -263,9 +294,58 @@ if(tipo==4) {
 	}
 
 	@Override
-	public int quantidadeTotalDeDiarias(int tipo) {
+
+	 public int quantidadeTotalDeDiarias(int tipo, Date inicio, Date fim) {
 		// TODO Auto-generated method stub
 		return 0;
-	}
+	}		
+	/*public int quantidadeTotalDeDiarias(int tipo) {
+		int total=0;
+		
+		if(tipo==0) {
+				for(int k=0; k<aluguel.size(); k++) {
+					   total+=aluguel.get(k).getDias();
+					
+			}
+				return total;
+		}
+				
+		if(tipo==1) {		 
+				for(int k=0; k<aluguel.size(); k++) {
+						if(aluguel.get(k).getVeiculo() instanceof Moto) {
+							total+=aluguel.get(k).getDias();
+							}
+						}
+				return total;
+				}
+				
+		if(tipo==2) {		 
+			    for(int k=0; k<aluguel.size(); k++) {
+			        	if(aluguel.get(k).getVeiculo() instanceof Carro) {
+			        		total+=aluguel.get(k).getDias();
+					}
+				}
+				return total;
+		}
+				
+		if(tipo==3) {		 
+			    for(int k=0; k<aluguel.size(); k++) {
+			        	if(aluguel.get(k).getVeiculo() instanceof Caminhao) {
+			        		total+=aluguel.get(k).getDias();
+					}
+				}
+				return total;
+		}
+		if(tipo==4) {		 
+			    for(int k=0; k<aluguel.size(); k++) {
+			        	if(aluguel.get(k).getVeiculo() instanceof Onibus) {
+			        		total+=aluguel.get(k).getDias();
+					}
+				}
+				return total;
+		}
+				return 0;
+>>>>>>> f4aae8d12bc9d1e72e5ecf79781a81684ebc399a
+	}*/
 
 }
