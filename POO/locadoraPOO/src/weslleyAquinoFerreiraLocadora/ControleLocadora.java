@@ -1,6 +1,7 @@
 package weslleyAquinoFerreiraLocadora;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
@@ -123,7 +124,9 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
         	   {
         		   gc.setTime(data);
         		   alugando.setDateInicio(gc);
-        		   gc.add(gc.DAY_OF_MONTH, dias);
+        		  // gc.add(Calendar.DATE, dias); //esse?
+        		   gc.add(Calendar.DAY_OF_MONTH, dias);
+        		  // gc.add(gc.DAY_OF_MONTH, dias);
         		   alugando.setDateFim(gc);
         		   alugando.setCpfCliente(cpf);
         		   alugando.setVeiculo(v);
