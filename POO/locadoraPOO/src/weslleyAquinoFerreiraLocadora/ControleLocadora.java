@@ -155,10 +155,9 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
         {
      	   if(v.getPlaca().equals(placa.trim()))
      	   {
-        for(Aluguel s: aluguel)
+            for(Aluguel s: aluguel)
      		   {
      	   if(s.getVeiculo().getPlaca().equals(placa)) {
-     		   //alugando.setVeiculo(v);
      		   aluguel.remove(s);
      		   placasLocadas.remove(placa);
      		   return true; //removido
