@@ -6,7 +6,7 @@ public class Carro extends Veiculo {
 	@Override
 	public double seguro() {
 		double aux;
-		aux= (valorAvaliado* 0.03)/365;
+		aux= (this.valorAvaliado* 0.03)/365;
 		return aux;
 	}
 
