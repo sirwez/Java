@@ -2,10 +2,7 @@ package weslleyAquinoFerreiraLocadora;
 
 public class Onibus extends Veiculo{
 
-	int Passageiros;
-	public void setPassageiros(int passageiros) {
-		Passageiros = passageiros;
-	}
+	private int Passageiros;
 
 	@Override
 	public double seguro() {
@@ -18,14 +15,21 @@ public class Onibus extends Veiculo{
 		return Passageiros;
 	}
 
+	public void setPassageiros(int passageiros) {
+		this.Passageiros = passageiros;
+	}
+
 	public void aumentarDiaria(double aumento) {
-		this.valorDiaria+=aumento;
+		this.setValorDiaria(this.valorDiaria*aumento);
 	}
 	public void diminuirDiaria(double diminuir) {
-		this.valorDiaria+=diminuir;
+		this.setValorDiaria(this.valorDiaria*diminuir);
 	}
 	public void reduzirValorAvaliado(double reduzir) {
-		this.valorAvaliado+=reduzir;
+		this.setValorAvaliado(this.valorAvaliado-reduzir);
+	}
+	public void aumentarValorAvaliado(double aumentar) {
+		this.setValorAvaliado(this.valorAvaliado+aumentar);
 	}
 
 }

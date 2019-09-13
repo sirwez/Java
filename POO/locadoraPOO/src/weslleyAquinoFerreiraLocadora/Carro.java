@@ -1,7 +1,7 @@
 package weslleyAquinoFerreiraLocadora;
 
 public class Carro extends Veiculo {
-    int TipoCarro;
+   private int TipoCarro;
 
 	@Override
 	public double seguro() {
@@ -14,16 +14,19 @@ public class Carro extends Veiculo {
 	return TipoCarro;
 }
     public void setTipoCarro(int tipoCarro) {
-	TipoCarro = tipoCarro;
+	this.TipoCarro = tipoCarro;
 }
 	public void aumentarDiaria(double aumento) {
-		this.valorDiaria+=aumento;
+		this.setValorDiaria(this.valorDiaria*aumento);
 	}
 	public void diminuirDiaria(double diminuir) {
-		this.valorDiaria+=diminuir;
+		this.setValorDiaria(this.valorDiaria*diminuir);
 	}
 	public void reduzirValorAvaliado(double reduzir) {
-		this.valorAvaliado+=reduzir;
+		this.setValorAvaliado(this.valorAvaliado-reduzir);
+	}
+	public void aumentarValorAvaliado(double aumentar) {
+		this.setValorAvaliado(this.valorAvaliado+aumentar);
 	}
 
 }

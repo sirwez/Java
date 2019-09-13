@@ -170,7 +170,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 
 	@Override
 	public void depreciarVeiculos(int tipo, double taxaDepreciacao) {
-		taxaDepreciacao/=100;
+		taxaDepreciacao=1-(taxaDepreciacao/100);
 		if(tipo==0) {
 			for(Veiculo v: veiculos)
 			{
@@ -221,7 +221,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 
 	@Override
 	public void aumentarDiaria(int tipo, double taxaAumento) {
-    taxaAumento/=100;
+    taxaAumento=1+(taxaAumento/100);
 		if(tipo==0) {
 			for(Veiculo v: veiculos)
 			{

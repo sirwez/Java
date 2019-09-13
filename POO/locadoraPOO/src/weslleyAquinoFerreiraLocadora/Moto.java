@@ -3,10 +3,8 @@ package weslleyAquinoFerreiraLocadora;
 public class Moto extends Veiculo {
 
 	
-	int Cilindrada;
-	public void setCilindrada(int cilindrada) {
-		Cilindrada = cilindrada;
-	}
+	private int Cilindrada;
+
 
 	@Override
 	public double seguro() {
@@ -14,19 +12,23 @@ public class Moto extends Veiculo {
 		aux= (valorAvaliado* 0.11)/365;
 		return aux;
 	}
-
+	public void setCilindrada(int cilindrada) {
+		this.Cilindrada = cilindrada;
+	}
 	public int getCilindrada() {
-		// TODO Auto-generated method stub
-		return 0;
+		return Cilindrada;
 	}
 	public void aumentarDiaria(double aumento) {
-		this.valorDiaria+=aumento;
+		this.setValorDiaria(this.valorDiaria*aumento);
 	}
 	public void diminuirDiaria(double diminuir) {
-		this.valorDiaria+=diminuir;
+		this.setValorDiaria(this.valorDiaria*diminuir);
 	}
 	public void reduzirValorAvaliado(double reduzir) {
-		this.valorAvaliado+=reduzir;
+		this.setValorAvaliado(this.valorAvaliado-reduzir);
+	}
+	public void aumentarValorAvaliado(double aumentar) {
+		this.setValorAvaliado(this.valorAvaliado+aumentar);
 	}
 
 }
