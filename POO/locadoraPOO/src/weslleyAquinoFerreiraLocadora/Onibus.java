@@ -26,10 +26,10 @@ public class Onibus extends Veiculo{
 		this.setValorDiaria(this.valorDiaria*diminuir);
 	}
 	public void reduzirValorAvaliado(double reduzir) {
-		this.setValorAvaliado(this.valorAvaliado-reduzir);
+		this.setValorAvaliado(this.valorAvaliado*reduzir);
 	}
 	public void aumentarValorAvaliado(double aumentar) {
-		this.setValorAvaliado(this.valorAvaliado+aumentar);
+		this.setValorAvaliado(this.valorAvaliado*aumentar);
 	}
 
 }

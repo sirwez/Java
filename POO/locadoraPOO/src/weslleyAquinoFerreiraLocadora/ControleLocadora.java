@@ -175,13 +175,13 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 			for(Veiculo v: veiculos)
 			{
 				if(v instanceof Moto) {
-					((Moto) v).diminuirDiaria(taxaDepreciacao);
+					((Moto) v).reduzirValorAvaliado(taxaDepreciacao);
 				   }else if(v instanceof Carro) {
-					((Carro) v).diminuirDiaria(taxaDepreciacao);
+					((Carro) v).reduzirValorAvaliado(taxaDepreciacao);
 			            	}else if(v instanceof Caminhao) {
-					((Caminhao) v).diminuirDiaria(taxaDepreciacao);
+					((Caminhao) v).reduzirValorAvaliado(taxaDepreciacao);
 				                   }else if(v instanceof Onibus) {
-					((Onibus) v).diminuirDiaria(taxaDepreciacao);
+					((Onibus) v).reduzirValorAvaliado(taxaDepreciacao);
 				}
 			}
 		}
@@ -189,7 +189,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 		if(tipo==1) {
 			for(Veiculo v: veiculos) {
 				if(v instanceof Moto) {
-					((Moto) v).diminuirDiaria(taxaDepreciacao);
+					((Moto) v).reduzirValorAvaliado(taxaDepreciacao);
 				} 
 			}
 		}
@@ -197,7 +197,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 		if(tipo==2) {
 			for(Veiculo v: veiculos) {
 				if(v instanceof Carro) {
-					((Carro) v).diminuirDiaria(taxaDepreciacao);
+					((Carro) v).reduzirValorAvaliado(taxaDepreciacao);
 				}
 			}
 		}
@@ -205,7 +205,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 		if(tipo==3) {
 			for(Veiculo v: veiculos) {
 				if(v instanceof Caminhao) {
-					((Caminhao) v).diminuirDiaria(taxaDepreciacao);
+					((Caminhao) v).reduzirValorAvaliado(taxaDepreciacao);
 				}
 			}
 		}
@@ -213,7 +213,7 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 		if(tipo==4) {
 			for(Veiculo v: veiculos) {
 				if(v instanceof Onibus) {
-					((Onibus) v).diminuirDiaria(taxaDepreciacao);
+					((Onibus) v).reduzirValorAvaliado(taxaDepreciacao);
 				}
 			}
 		}
@@ -226,13 +226,13 @@ ArrayList<Veiculo> lista = new ArrayList<Veiculo>();
 			for(Veiculo v: veiculos)
 			{
 				if(v instanceof Moto) {
-					((Moto) v).diminuirDiaria(taxaAumento);
+					((Moto) v).aumentarDiaria(taxaAumento);
 				   }else if(v instanceof Carro) {
-					((Carro) v).diminuirDiaria(taxaAumento);
+					((Carro) v).aumentarDiaria(taxaAumento);
 			            	}else if(v instanceof Caminhao) {
-					((Caminhao) v).diminuirDiaria(taxaAumento);
+					((Caminhao) v).aumentarDiaria(taxaAumento);
 				                   }else if(v instanceof Onibus) {
-					((Onibus) v).diminuirDiaria(taxaAumento);
+					((Onibus) v).aumentarDiaria(taxaAumento);
 				}
 			}
 		}
