@@ -1,5 +1,7 @@
 package weslleyAquinoFerreiraLocadora;
 
+//import java.util.ArrayList;
+
 public abstract class Veiculo {
 
 	protected String marca;
@@ -10,6 +12,10 @@ public abstract class Veiculo {
 	protected String placa;
 
 	public abstract double seguro();
+	 //Seguro Moto = (valor do bem * 11%)/365
+    //Seguro Carro = (valor do bem * 3%)/365
+    //Seguro Caminhao = (valor do bem * 8%)/365
+    //Seguro onibus = (valor do bem * 20%)/365
 	
 	public double aluguel(int dias) {
 		return (valorDiaria + seguro()) * dias;

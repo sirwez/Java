@@ -1,32 +1,45 @@
 package weslleyAquinoFerreiraLocadora;
 
 public class Carro extends Veiculo {
-   private int TipoCarro;
-
+	int tipoCarro;
+	
 	@Override
 	public double seguro() {
-		double aux;
-		aux= (this.valorAvaliado* 0.03)/365;
-		return aux;
+		return (this.getValorAvaliado() * 0.03)/365;
+	}
+	
+	public int getTipo() {
+		return tipoCarro;
 	}
 
-	public int getTipoCarro() {
-	return TipoCarro;
-}
-    public void setTipoCarro(int tipoCarro) {
-	this.TipoCarro = tipoCarro;
-}
-	public void aumentarDiaria(double aumento) {
-		this.setValorDiaria(this.valorDiaria*aumento);
+	void setTipoCarro(int tipoCarro) {
+		this.tipoCarro = tipoCarro;
 	}
-	public void diminuirDiaria(double diminuir) {
-		this.setValorDiaria(this.valorDiaria*diminuir);
+
+	public void aumentarDiaria(double valorAumento) {
+		this.setValorDiaria(this.valorDiaria*valorAumento);
 	}
-	public void reduzirValorAvaliado(double reduzir) {
-		this.setValorAvaliado(this.valorAvaliado*reduzir);
+	
+	public void diminurDiaria(double valorDiminuicao) {
+		this.setValorDiaria(this.valorDiaria*valorDiminuicao);
 	}
-	public void aumentarValorAvaliado(double aumentar) {
-		this.setValorAvaliado(this.valorAvaliado*aumentar);
+	
+	public void aumentarValorAvaliado(double valorAumento) {
+		this.setValorAvaliado(this.valorAvaliado*valorAumento);
+	}
+	
+	public void diminuirValorAvaliado(double valorDiminuir) {
+		this.setValorAvaliado(this.valorAvaliado*valorDiminuir);
+	}
+	
+	public Carro(String marca, String modelo, int anoDeFabricacao, double valorAvaliado, double valorDiaria,String placa, int tipo) {
+		this.marca=marca;
+		this.modelo=modelo;
+		this.anoDeFabricacao=anoDeFabricacao;
+		this.valorAvaliado=valorAvaliado;
+		this.valorDiaria=valorDiaria;
+		this.placa=placa;
+		this.tipoCarro=tipo;
 	}
 
 }

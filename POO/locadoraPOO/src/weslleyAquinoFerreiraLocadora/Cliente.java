@@ -1,5 +1,7 @@
 package weslleyAquinoFerreiraLocadora;
 
+//import java.util.ArrayList;
+
 public class Cliente {
 
 	private int cpf;
@@ -21,4 +23,5 @@ public class Cliente {
 		cpf = cpf1;
 		nome = nome1;
 	}	
+	
 }

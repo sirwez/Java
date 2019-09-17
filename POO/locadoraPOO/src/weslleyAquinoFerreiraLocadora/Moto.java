@@ -3,32 +3,44 @@ package weslleyAquinoFerreiraLocadora;
 public class Moto extends Veiculo {
 
 	
-	private int Cilindrada;
-
-
+	int cilindrada;
+	
 	@Override
 	public double seguro() {
-		double aux;
-		aux= (valorAvaliado* 0.11)/365;
-		return aux;
+		return (this.getValorAvaliado() *0.11)/365;
 	}
-	public void setCilindrada(int cilindrada) {
-		this.Cilindrada = cilindrada;
-	}
+	
 	public int getCilindrada() {
-		return Cilindrada;
-	}
-	public void aumentarDiaria(double aumento) {
-		this.setValorDiaria(this.valorDiaria*aumento);
-	}
-	public void diminuirDiaria(double diminuir) {
-		this.setValorDiaria(this.valorDiaria*diminuir);
-	}
-	public void reduzirValorAvaliado(double reduzir) {
-		this.setValorAvaliado(this.valorAvaliado*reduzir);
-	}
-	public void aumentarValorAvaliado(double aumentar) {
-		this.setValorAvaliado(this.valorAvaliado*aumentar);
+		return cilindrada;
 	}
 
+	void setCilindrada(int cilindrada) {
+		this.cilindrada = cilindrada;
+	}
+	
+	public void aumentarDiaria(double valorAumento) {
+		this.setValorDiaria(this.valorDiaria*valorAumento);
+	}
+	
+	public void diminurDiaria(double valorDiminuicao) {
+		this.setValorDiaria(this.valorDiaria*valorDiminuicao);
+	}
+	
+	public void aumentarValorAvaliado(double valorAumento) {
+		this.setValorAvaliado(this.valorAvaliado*valorAumento);
+	}
+	
+	public void diminuirValorAvaliado(double valorDiminuir) {
+		this.setValorAvaliado(this.valorAvaliado*valorDiminuir);
+	}
+	
+	public Moto(String marca, String modelo, int anoDeFabricacao, double valorAvaliado, double valorDiaria,String placa, int cilindrada) {
+		this.marca=marca;
+		this.modelo=modelo;
+		this.anoDeFabricacao=anoDeFabricacao;
+		this.valorAvaliado=valorAvaliado;
+		this.valorDiaria=valorDiaria;
+		this.placa=placa;
+		this.cilindrada=cilindrada;
+	}
 }

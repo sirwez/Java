@@ -1,40 +1,39 @@
 package weslleyAquinoFerreiraLocadora;
 
-//import java.util.Date;
-import java.util.GregorianCalendar;
+import java.util.Date;
+
 
 public class Aluguel {
-private Veiculo veiculo;
-private int cpfCliente;
-private GregorianCalendar dateInicio;
-private GregorianCalendar dateFim;
-private int dias;
-private double valor;
+	private Veiculo veiculo;
+	private Cliente cliente;
+	private int dias;
+	private double valor;
+	private Date dateInicio;
+	private boolean locado;
 
-public int getDias() {
-	return dias;
-}
-public void setDias(int dias) {
-	this.dias = dias;
-}
-
-public GregorianCalendar getDateInicio() {
-	return dateInicio;
-}
-public void setDateInicio(GregorianCalendar dateInicio) {
-	this.dateInicio = dateInicio;
-}
-public GregorianCalendar getDateFim() {
-	return dateFim;
-}
-public void setDateFim(GregorianCalendar dateFim) {
-	this.dateFim = dateFim;
-}
 public Veiculo getVeiculo() {
 	return veiculo;
 }
 public void setVeiculo(Veiculo veiculo) {
 	this.veiculo = veiculo;
+}
+public Cliente getCliente() {
+	return cliente;
+}
+public void setCliente(Cliente cliente) {
+	this.cliente = cliente;
+}
+public Date getDateInicio() {
+	return dateInicio;
+}
+public void setDateInicio(Date dateInicio) {
+	this.dateInicio = dateInicio;
+}
+public int getDias() {
+	return dias;
+}
+public void setDias(int dias) {
+	this.dias = dias;
 }
 public double getValor() {
 	return valor;
@@ -42,10 +41,18 @@ public double getValor() {
 public void setValor(double valor) {
 	this.valor = valor;
 }
-public int getCpfCliente() {
-	return cpfCliente;
+
+public Aluguel(Veiculo vei, Cliente c, Date data, int d) {
+	this.cliente = c;
+	this.veiculo = vei;
+	this.dias = d;
+	this.dateInicio = data;
+	this.valor = vei.aluguel(d);
 }
-public void setCpfCliente(int cpfCliente) {
-	this.cpfCliente = cpfCliente;
+public boolean isLocado() {
+	return locado;
+}
+public void setLocado(boolean locado) {
+	this.locado = locado;
 }
 }
