@@ -222,9 +222,9 @@ public class MeuPregao implements InterfacePregao{
 				{
 					if(!prop.isContratado() && !s.isContratado()) {
 						
-						prop.isContratado(true);
+						prop.setContratado(true);
 						s.getContratante().setContratoEmVigor(true);
-						s.isContratado(true);
+						s.setContratado(true);
 						
 					}
 				}
