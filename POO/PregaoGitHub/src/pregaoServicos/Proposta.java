@@ -1,4 +1,4 @@
-package pregaoServicos;
+package felipeDaRochaTorres.pregaoServicos;
 
 public class Proposta {
 	private Prestador prestador;
@@ -7,39 +7,19 @@ public class Proposta {
 	private double valor;
 	private String emailPrestado;
 	private boolean contratado;
-	private boolean finalizado;
 	
-	public boolean isContratado() {
-		return contratado;
-	}
-
-	public void setContratado(boolean contratado) {
-		this.contratado = contratado;
-	}
-
-	public boolean isFinalizado() {
-		return finalizado;
-	}
-
-	public void setFinalizado(boolean finalizado) {
-		this.finalizado = finalizado;
-	}
-
 	public Proposta(int codigoServico, String emailPrestado, double valor, int prazo) {
 		this.setCodigoServico(codigoServico);
 		this.setEmailPrestado(emailPrestado);
 		this.setValor(valor);
 		this.setPrazo(prazo);
-		setAvaliacaoMediaPrestador(0);
+		setContratado(false);
 	}
 
 	public int getAvaliacaoMediaPrestador() {
 		return prestador.getAvaliacaoMediaPrestador();
 	}
 
-	public void setAvaliacaoMediaPrestador(int avaliacaoMediaPrestador) {
-		prestador.setAvaliacaoMediaPrestador(avaliacaoMediaPrestador);
-	}
 
 	public int getCodigoServico() {
 		return codigoServico;
@@ -79,5 +59,13 @@ public class Proposta {
 
 	public void setPrestador(Prestador prestador) {
 		this.prestador = prestador;
+	}
+
+	public boolean isContratado() {
+		return contratado;
+	}
+
+	public void setContratado(boolean contratado) {
+		this.contratado = contratado;
 	}
 }

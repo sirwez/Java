@@ -1,5 +1,6 @@
-package pregaoServicos;
+package felipeDaRochaTorres.pregaoServicos;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ public class TesteMeuPregaoResumido {
 		pregao.cadastrarContratante("erico@ufpi.edu.br", "Erico Leao", "7777-7777");
 		
 		
-		int cod1= pregao.cadastrarServico("pasn@ufpi.edu.br", "Corte de grama em jardim de 20m2", 100, 2, 1);
+		int cod1 = pregao.cadastrarServico("pasn@ufpi.edu.br", "Corte de grama em jardim de 20m2", 100, 2, 1);
 		ArrayList<Servico> servs = pregao.listarServicos(100, 0, 0, false, false, 0);
 		assertEquals(1, servs.size());
 

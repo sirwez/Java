@@ -1,9 +1,8 @@
-package pregaoServicos;
-
+package felipeDaRochaTorres.pregaoServicos;
 
 public class Contratante extends Usuario{
 	private boolean contratoEmVigor;
-	private int avaliacaoMediaContratante;
+	private int avaliacaoMediaContratante=0;
 	
 	public Contratante(String email, String nome, String telefone) {
 		super(email, nome, telefone);
@@ -17,12 +16,13 @@ public class Contratante extends Usuario{
 	}
 
 	public int getAvaliacaoMediaContratante() {
-		return avaliacaoMediaContratante;
+		int i;
+		for(i=0; i<this.avaliacoesNota.size();i++) {
+			avaliacaoMediaContratante += this.avaliacoesNota.get(i);
+		}
+		return avaliacaoMediaContratante/i;
 	}
 
-	public void setAvaliacaoMediaContratante(int avaliacaoMediaContratante) {
-		this.setQuantDeAvaliacoes(this.getQuantDeAvaliacoes()+1);
-		this.setSomaDasAvaliacoes(this.getSomaDasAvaliacoes()+avaliacaoMediaContratante);
-		this.avaliacaoMediaContratante =this.getSomaDasAvaliacoes()/this.getQuantDeAvaliacoes();
-	}
+
+	
 }

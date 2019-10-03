@@ -1,6 +1,7 @@
-package pregaoServicos;
+package felipeDaRochaTorres.pregaoServicos;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Servico {
 	private Contratante contratante;
@@ -12,6 +13,7 @@ public class Servico {
 	private boolean finalizado;
 	private String emailContratante;
 	private String descricao;
+	private Date dataFinalizado;
 	
 	ArrayList<Proposta> propostas = new ArrayList<Proposta>();
 	
@@ -23,7 +25,6 @@ public class Servico {
 		this.setTipo(tipo);
 		setContratado(false);
 		setFinalizado(false);
-		setAvaliacaoMediaContratante(0);
 		this.setCodigoServico((int)(this.getValor()+this.getPrazoMaximo()+this.getTipo()));
 	}
 
@@ -56,7 +57,7 @@ public class Servico {
 	}
 
 	public void setAvaliacaoMediaContratante(int avaliacaoMediaContratante) {
-		contratante.setAvaliacaoMediaContratante(avaliacaoMediaContratante);
+		contratante.avaliacoesNota.add(avaliacaoMediaContratante);
 	}
 
 	public int getCodigoServico() {
@@ -105,6 +106,14 @@ public class Servico {
 
 	public void setContratante(Contratante contratante) {
 		this.contratante = contratante;
+	}
+
+	public Date getDataFinalizado() {
+		return dataFinalizado;
+	}
+
+	public void setDataFinalizado(Date dataFinalizado) {
+		this.dataFinalizado = dataFinalizado;
 	}
 	
 }

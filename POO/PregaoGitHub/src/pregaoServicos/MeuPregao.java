@@ -1,8 +1,10 @@
-package pregaoServicos;
-
+package felipeDaRochaTorres.pregaoServicos;
 
 import java.util.ArrayList;
 import java.util.Date;
+
+import pregaoServicos.Proposta;
+import pregaoServicos.Servico;
 
 public class MeuPregao implements InterfacePregao{
 		ArrayList<Contratante> contratantes = new ArrayList<Contratante>();
@@ -141,8 +143,8 @@ public class MeuPregao implements InterfacePregao{
 		// avaliacao 0 significa todas ou então apenas avaliações acima de um limite mínimo.
 		// somente as não contratadas e finalizadas
 		public ArrayList<Proposta> listarPropostas(int codigoServico, double valor, int prazoMaximo, int avaliacaoMediaPrestador){
-		
-			ArrayList<Proposta> p = new ArrayList<Proposta>();
+			
+			ArrayList<Proposta> prop = new ArrayList<Proposta>();
 			
 			Servico s = pesquisarServicoCodigo(codigoServico);
 		
@@ -150,57 +152,57 @@ public class MeuPregao implements InterfacePregao{
 			
 				if(valor == 0 && prazoMaximo == 0 && avaliacaoMediaPrestador ==0)
 				{
-					if(c.isContratado() == false && c.isFinalizado()) {
-			             p.add(c);
+					if(c.isContratado() == false && s.isFinalizado()) {
+			             prop.add(c);
 		            }
 				}
 				
 				if(valor == 0 && prazoMaximo == 0 && avaliacaoMediaPrestador !=0)
 				{
-					if(c.isContratado() == false && c.isFinalizado() && c.getAvaliacaoMediaPrestador() >= avaliacaoMediaPrestador) {
-			             p.add(c);
+					if(c.isContratado() == false && s.isFinalizado() && c.getAvaliacaoMediaPrestador() >= avaliacaoMediaPrestador) {
+			             prop.add(c);
 		            }
 				}
 				
 				if(valor == 0 && prazoMaximo != 0 && avaliacaoMediaPrestador !=0)
 				{
-					if(c.getPrazo() <prazoMaximo && c.isContratado() == false && c.isFinalizado() && c.getAvaliacaoMediaPrestador() >= avaliacaoMediaPrestador) {
-			             p.add(c);
+					if(c.getPrazo() <prazoMaximo && c.isContratado() == false && s.isFinalizado() && c.getAvaliacaoMediaPrestador() >= avaliacaoMediaPrestador) {
+			             prop.add(c);
 		            }
 				}
 				
 				if(valor == 0 && prazoMaximo != 0 && avaliacaoMediaPrestador ==0)
 				{
-					if(c.getPrazo() <prazoMaximo && c.isContratado() == false && c.isFinalizado()) {
-			             p.add(c);
+					if(c.getPrazo() <prazoMaximo && c.isContratado() == false && s.isFinalizado()) {
+			             prop.add(c);
 		            }
 				}
 						
 				if(valor != 0 && prazoMaximo != 0 && avaliacaoMediaPrestador !=0)
 				{
-					if(valor>c.getValor() && c.getPrazo() <prazoMaximo && c.isContratado() == false && c.isFinalizado() && c.getAvaliacaoMediaPrestador() >= avaliacaoMediaPrestador) {
-			             p.add(c);
+					if(valor>c.getValor() && c.getPrazo() <prazoMaximo && c.isContratado() == false && s.isFinalizado() && c.getAvaliacaoMediaPrestador() >= avaliacaoMediaPrestador) {
+			             prop.add(c);
 		            }
 				}
 				
 				if(valor != 0 && prazoMaximo == 0 && avaliacaoMediaPrestador !=0)
 				{
-					if(valor>c.getValor() && c.isContratado() == false && c.isFinalizado() && c.getAvaliacaoMediaPrestador() >= avaliacaoMediaPrestador) {
-			             p.add(c);
+					if(valor>c.getValor() && c.isContratado() == false && s.isFinalizado() && c.getAvaliacaoMediaPrestador() >= avaliacaoMediaPrestador) {
+			             prop.add(c);
 		            }
 				}
 				
 				if(valor != 0 && prazoMaximo == 0 && avaliacaoMediaPrestador ==0)
 				{
-					if(valor>c.getValor() && c.isContratado() == false && c.isFinalizado()) {
-			             p.add(c);
+					if(valor>c.getValor() && c.isContratado() == false && s.isFinalizado()) {
+			             prop.add(c);
 		            }
 				}
 				
 				if(valor != 0 && prazoMaximo != 0 && avaliacaoMediaPrestador ==0)
 				{
-					if(valor>c.getValor() && c.getPrazo() <prazoMaximo && c.isContratado() == false && c.isFinalizado()) {
-			             p.add(c);
+					if(valor>c.getValor() && c.getPrazo() <prazoMaximo && c.isContratado() == false && s.isFinalizado()) {
+			             prop.add(c);
 		            }
 				}				
 		   	}
@@ -211,24 +213,54 @@ public class MeuPregao implements InterfacePregao{
 		public void contratarProposta(int codigoServico, String emailPrestador) {
 			Prestador p = pesquisarPrestador(emailPrestador);
 			if(p==null) {return;}
+			Servico s = pesquisarServicoCodigo(codigoServico);
+			if(s==null) {return;}
+			
+			for(Proposta prop: s.propostas)
+			{
+				if(prop.getEmailPrestado().equals(emailPrestador) && codigoServico == prop.getCodigoServico())
+				{
+					if(!prop.isContratado() && !s.isContratado()) {
+						
+						prop.isContratado(true);
+						s.getContratante().setContratoEmVigor(true);
+						s.isContratado(true);
+						
+					}
+				}
+			}
 		}
 		
 		// Proposta deve ter sido contratada. Marca serviço como finalizado.
 		public void finalizarServico(int codigoServico, Date data) {
+			Servico s = pesquisarServicoCodigo(codigoServico);
+			if(s == null) {return;}
 			
+			if(s.isContratado()) {
+				s.setDataFinalizado(data);
+				s.setFinalizado(true);
+				s.getContratante().setContratoEmVigor(false);
+			}
 		}
 		// Servico deve ter sido finalizado. 
 		public void avaliarPrestador(int codigoServico, int nota, String observacoes) {
-			
+			Servico s = pesquisarServicoCodigo(codigoServico);
+			if(s != null && s.isFinalizado()) {
+				for(Proposta p : s.propostas) {
+					if(p.isContratado()) {
+						p.getPrestador().avaliacoesNota.add(nota);
+						p.getPrestador().avaliacoesObservacoes.add(observacoes);
+					}
+				}
+			}
 		}
 		
 		// Servico deve ter sido finalizado.
 		public void avaliarContratante(int codigoServico, int nota, String observacoes) {
 			Servico s = pesquisarServicoCodigo(codigoServico);
-			if(s.getCodigoServico()==codigoServico && s.isFinalizado()){
-				s.setAvaliacaoMediaContratante(nota);
-				Contratante c = pesquisarContratante(s.getEmailContratante());
-				c.setObservacoes(observacoes);
+			if(s!= null && s.isFinalizado()){
+				s.getContratante().avaliacoesNota.add(nota);
+				s.getContratante().avaliacoesObservacoes.add(observacoes);
 			}
 			
 		}

@@ -1,12 +1,14 @@
-package pregaoServicos;
+package felipeDaRochaTorres.pregaoServicos;
+
+import java.util.ArrayList;
 
 public class Usuario {
 	private String email;
 	private String nome;
 	private String telefone;
-	private String observacoes="";
-	private int quantDeAvaliacoes=0;
-	private int somaDasAvaliacoes=0;
+	
+	ArrayList<String> avaliacoesObservacoes = new ArrayList<String>();
+	ArrayList<Integer> avaliacoesNota = new ArrayList<Integer>();
 	
 	public Usuario(String email, String nome, String telefone) {
 		this.setEmail(email);
@@ -36,30 +38,6 @@ public class Usuario {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
-	}
-
-	public String getObservacoes() {
-		return observacoes;
-	}
-
-	public void setObservacoes(String observacoes) {
-		this.observacoes = observacoes;
-	}
-
-	public int getQuantDeAvaliacoes() {
-		return quantDeAvaliacoes;
-	}
-
-	public void setQuantDeAvaliacoes(int quantDeAvaliacoes) {
-		this.quantDeAvaliacoes = quantDeAvaliacoes;
-	}
-
-	public int getSomaDasAvaliacoes() {
-		return somaDasAvaliacoes;
-	}
-
-	public void setSomaDasAvaliacoes(int somaDasAvaliacoes) {
-		this.somaDasAvaliacoes = somaDasAvaliacoes;
 	}
 	
 }

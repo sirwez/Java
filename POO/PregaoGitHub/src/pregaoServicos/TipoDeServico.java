@@ -1,4 +1,4 @@
-package pregaoServicos;
+package felipeDaRochaTorres.pregaoServicos;
 
 public class TipoDeServico {
 	private int cod;
