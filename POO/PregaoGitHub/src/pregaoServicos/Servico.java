@@ -1,4 +1,4 @@
-package felipeDaRochaTorres.pregaoServicos;
+package pregaoServicos;
 
 import java.util.ArrayList;
 import java.util.Date;

@@ -1,4 +1,4 @@
-package felipeDaRochaTorres.pregaoServicos;
+package pregaoServicos;
 
 public class Proposta {
 	private Prestador prestador;

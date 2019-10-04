@@ -1,18 +1,18 @@
-package felipeDaRochaTorres.pregaoServicos;
+package pregaoServicos;
 
 public class Contratante extends Usuario{
-	private boolean contratoEmVigor;
+	private boolean servicoEmVigor;
 	private int avaliacaoMediaContratante=0;
 	
 	public Contratante(String email, String nome, String telefone) {
 		super(email, nome, telefone);
 	}
 	
-	public boolean isContratoEmVigor() {
-		return contratoEmVigor;
+	public boolean isServicoEmVigor() {
+		return servicoEmVigor;
 	}
-	public void setContratoEmVigor(boolean contratoEmVigor) {
-		this.contratoEmVigor = contratoEmVigor;
+	public void setServicoEmVigor(boolean contratoEmVigor) {
+		this.servicoEmVigor = contratoEmVigor;
 	}
 
 	public int getAvaliacaoMediaContratante() {
@@ -22,7 +22,5 @@ public class Contratante extends Usuario{
 		}
 		return avaliacaoMediaContratante/i;
 	}
-
-
 	
 }
